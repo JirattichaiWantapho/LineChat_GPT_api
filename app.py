@@ -65,7 +65,8 @@ def detect_intent(user_message):
     # ตรวจสอบ intent ว่าอยู่ใน faq_responses หรือไม่
     for key in faq_responses:
         if key.lower() in intent.lower():  # ตรวจสอบโดยไม่สนตัวพิมพ์ใหญ่-เล็ก
-            return f"คุณหมายถึง '{key}' ใช่หรือไม่?\n\n{faq_responses[key]}"
+            if key != "สวัสดี":
+                return f"คุณหมายถึง '{key}' ใช่หรือไม่?\n\n{faq_responses[key]}"
 
     # กรณี AI ไม่สามารถวิเคราะห์ intent ได้
     return "ขออภัย ฉันไม่เข้าใจคำถามของคุณ กรุณาลองพิมพ์ใหม่ หรือ กดที่เมนูติดต่อแอดมิน"
